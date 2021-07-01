@@ -303,6 +303,10 @@ input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="p
     border-bottom: 1px solid rgba(19, 24, 44, .125)
 }
 
+.ct-line, .ct-point {
+    stroke: #40e0d0 !important
+}
+
 .card-header:first-child {
     border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0
 }
