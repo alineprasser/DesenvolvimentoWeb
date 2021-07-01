@@ -58,6 +58,11 @@ body, html {
     border-radius: 5px;
 }
 
+.imc_calcular {
+    background-color: #40e0d0;
+    color: white;
+}
+
 .imc {
     padding: 10px 0px 0px 15px;
     border-bottom: 1px solid #d7dbdd;
