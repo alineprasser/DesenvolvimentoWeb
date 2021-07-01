@@ -18,6 +18,23 @@
   <link rel="stylesheet" href="./css/main.css" />
   <link rel="stylesheet" href="./css/evento_saude.css" />
 
+
+  <link rel="stylesheet" href="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.min.css">
+  <script src="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      data = {
+        'labels': ['10/05/2021', '10/06/2021', '24/06/2021'],
+        'series': [
+          [26.4, 25.2, 23.4]
+        ]
+      };
+      new Chartist.Line('.ct-chart', data, {
+        showPoint: true,
+      });
+    });
+  </script>
+
   <title>OnSaúde</title>
   </script>
 </head>
@@ -45,7 +62,7 @@
             </li>
 
             <li>
-              <a href="#" class="nav-link px-0">
+              <a href="./catalogo.html" class="nav-link px-0">
                 <i class="fas fa-running"></i>
                 <span class="d-none d-sm-inline">Catálogo de Exercícios</span>
               </a>
@@ -122,47 +139,39 @@
             <div class="imc">
               <h5>HISTÓRICO</h5>
             </div>
-            <div class="imc historico_imc">
-              <h5>Conteudo</h5>
+            <div class="historico_imc">
+              <div class="page-content page-container" id="page-content">
+                <div class="p-3">
+                  <div class="row">
+                    <div class="container-fluid d-flex justify-content-center">
+                      <div class="col">
+                        <div class="card w-100">
+                          <div class="card-body" style="height: 420px;">
+                            <div class="chartjs-size-monitor"
+                              style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                              <div class="chartjs-size-monitor-expand"
+                                style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                              </div>
+                              <div class="chartjs-size-monitor-shrink"
+                                style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                              </div>
+                            </div>
+                            <div class="d-block w-100 h-100 ct-chart ct-square chartjs-render-monitor"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <!-- <form>
-              <label for="tipo-evento">Tipo</label>
-              <select class="form-select" id="tipo-evento">
-                <option selected>Selecione</option>
-                <option value="1">Exame</option>
-                <option value="2">Vacina</option>
-                <option value="3">Consulta</option>
-              </select>
-
-              <div class="form-group pt-3">
-                <label for="nome-evento">Nome</label>
-                <input type="text" class="form-control" id="nome-evento" placeholder="Ex: Vacina Covid">
-              </div>
-
-              <div class="row  pt-3">
-                <div class="col">
-                  <label for="data">Data</label>
-                  <input id="data" type="text" class="form-control" placeholder="10/06/2021">
-                </div>
-                <div class="col">
-                  <label for="hora">Hora</label>
-                  <input id="hora" type="text" class="form-control" placeholder="10:00">
-                </div>
-              </div>
-
-              <div class="form-group  pt-3">
-                <label for="local">Local</label>
-                <input type="text" class="form-control" id="local" placeholder="Ex: Posto de Saúde">
-              </div>
-
-              <div class="d-flex flex-column justify-content-center align-items-center mt-3">
-                <input type="submit" name="salvar" class="btn salvar_btn mt-2" value="Salvar" />
-              </div>
-            </form> -->
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
