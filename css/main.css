@@ -44,6 +44,46 @@
         border-radius: 5px;
 
     }
+    .imc_card {
+        height: 100%;
+        width: 100%;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: white;
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border: 2px solid #F0F4F7;
+        border-radius: 5px;
+    }
+
+    .imc {
+        padding: 10px 0px 0px 15px;
+        border-bottom: 1px solid #d7dbdd;
+    }
+
+    .informacao_atual_titulo {
+        font-size: 17px;
+    }
+
+    .informacao_atual_conteudo {
+        font-size: 17px;
+        margin-left: 5px;
+    }
+
+    .informacao_atual_conteudo_imc_borda {
+        background-color: rgb(118, 211, 118);
+        border-radius: 10px;
+    }
+
+    .informacao_atual_conteudo_imc {
+        margin-top: 3px;
+        font-size: 17px;
+        background-color: rgb(118, 211, 118);
+        border-radius: 10px;
+    }
+
     .brand_logo_container {
         position: absolute;
         height: 170px;
