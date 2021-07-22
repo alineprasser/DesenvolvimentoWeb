@@ -27,8 +27,15 @@ body, html {
     border-radius: 5px;
 }
 
+.label {
+    text-transform: uppercase;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: #aaa;
+}
+
 .user_cadastro {
-    height: 500px;
+    height: 80vh;
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
