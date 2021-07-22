@@ -48,6 +48,7 @@
           >
             <h5 style="font-size: 18px" class="mb-4">Cadastre-se!</h5>
             <form>
+              <label for="name" class="label">Nome</label>
               <div class="input-group mb-2">
                 <span class="input-group-text">
                   <i class="fas fa-user"></i>
@@ -61,11 +62,12 @@
                 />
               </div>
 
+              <label for="email" class="label">Email</label>
               <div class="input-group mb-2">
-                <span class="input-group-text">
+              <span class="input-group-text">
                   <i class="fas fa-envelope"></i>
                 </span>
-                <input
+                <input 
                   type="text"
                   name="email"
                   class="form-control input_user"
@@ -73,6 +75,35 @@
                   placeholder="email@dominio.com.br"
                 />
               </div>
+
+
+              <label for="nascimento" class="label">Data de nascimento</label>
+              <div class="input-group mb-2">
+              <span class="input-group-text">
+                  <i class="fas fa-calendar-alt"></i>
+                </span>
+                <input 
+                  type="date"
+                  name="nascimento"
+                  class="form-control input_user"
+                  />
+              </div>
+
+              <label for="cpf" class="label">cpf</label>
+              <div class="input-group mb-2">
+                <span class="input-group-text">
+                  <i class="fas fa-id-badge"></i>
+                </span>
+                <input 
+                  type="text"
+                  name="cpf"
+                  class="form-control input_user"
+                  value=""
+                  placeholder="123.456.789-12"
+                />
+              </div>
+
+              <label for="password" class="label">Senha</label>
               <div class="input-group mb-2">
                 <span class="input-group-text">
                   <i class="fas fa-key"></i>
@@ -85,6 +116,8 @@
                   placeholder="Senha"
                 />
               </div>
+
+              <label for="confirm_password" class="label">Confirmar senha</label>
               <div class="input-group mb-2">
                 <span class="input-group-text">
                   <i class="fas fa-key"></i>
