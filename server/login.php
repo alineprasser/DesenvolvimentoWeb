@@ -1,6 +1,6 @@
 <?php
 
-require_once('./databaseConnection.php');
+require_once('./DatabaseConnection.php');
 require_once('./config.php');
 
 session_start();
