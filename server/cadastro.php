@@ -1,53 +1,50 @@
 <?php
 
-require('./databaseConnection.php');
-require('./config.php');
-
-$connection = Database::Conection();
-
-$nome = $_POST['name'];
-$email = $_POST['email'];
-$dataNascimento = $_POST['nascimento'];
-$cpf = $_POST['cpf'];
-$senha = $_POST['password'];
-$confirmeSenha = $_POST['confirm_password'];
-
-
-if (emailCadastrado($connection, $email)) {
-    header('location: ' . URL_BASE, true, 422);
-    echo 'Esse email já está cadastrado!';
-    return false;
-}
-
-if (!verificarSenhas($senha, $confirmeSenha)) {
-    header('location: ' . URL_BASE, true, 422);
-    echo 'Senhas não conferem!';
-    return false;
-}
+require_once('./UsuarioDAO.php');
 
 try {
-    $query = $connection->prepare("INSERT INTO usuarios (nome, email, senha, cpf, data_nascimento) VALUE(:nome, :email, :senha, :cpf, :data_nascimento)");
-    $query->bindValue(':nome', $nome, PDO::PARAM_STR);
-    $query->bindValue(':email', $email, PDO::PARAM_STR);
-    $query->bindValue(':senha', $senha, PDO::PARAM_STR);
-    $query->bindValue(':cpf', $cpf, PDO::PARAM_STR);
-    $query->bindValue(':data_nascimento', $dataNascimento, PDO::PARAM_STR);
-    $query->execute();
-} catch (\PDOException $erro) {
-    echo $erro->getMessage();
-}
-// header('HTTP/1.0 200 Ok');
-header('location: ' . URL_BASE, true, 200);
+    $usuarioDao = new UsuarioDAO();
+    verificarDadosCadastro($usuarioDao);
 
-function emailCadastrado($connection, $email)
+    $dadosUsuario = [
+        'nome' => $_POST['name'],
+        'email' => $_POST['email'],
+        'dataNascimento' => $_POST['nascimento'],
+        'cpf' => $_POST['cpf'],
+        'senha' => $_POST['password'],
+        'confirmeSenha' => $_POST['confirm_password'],
+    ];
+    $usuarioDao->cadastrarUsuario($dadosUsuario);
+
+    header('location: '.URL_BASE, true, 200);
+    echo 'Usuário cadastrado com sucesso!';
+    return true;
+} catch (Exception $erro) {
+    echo 'Erro ao cadastrar usuário!'.PHP_EOL.$erro->getMessage();
+    header('location: '.URL_BASE, true, 422);
+    return false;
+}
+
+function verificarDadosCadastro($usuarioDao)
 {
-    $query = $connection->prepare("SELECT * FROM usuarios WHERE email = :email");
-    $query->bindValue(':email', $email, PDO::PARAM_STR);
-    $query->execute();
-    return $query->rowCount();
+    $email = $_POST['email'];
+    $senha = $_POST['password'];
+    $confirmeSenha = $_POST['confirm_password'];
+
+    if ($usuarioDao->verificarEmailJaCadastrado($email)) {
+        header('location: '.URL_BASE, true, 422);
+        echo 'Esse email já está cadastrado!';
+        die();
+    }
+
+    if (!verificarSenhas($senha, $confirmeSenha)) {
+        header('location: '.URL_BASE, true, 422);
+        echo 'Senhas não conferem!';
+        die();
+    }
 }
 
-function verificarSenhas($senha, $confirmeSenha)
+function verificarSenhas($senha, $confirmeSenha): bool
 {
     return $senha == $confirmeSenha;
 }

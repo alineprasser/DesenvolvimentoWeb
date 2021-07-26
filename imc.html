@@ -129,15 +129,15 @@
               <h5>ENTRAR NOVAS MEDIDAS</h5>
             </div>
             <div class="imc form_imc">
-              <form action="">
+              <form action="server/imc.php" method="post">
                 <div class="row pt-2 pb-3">
                   <div class="col">
                     <label for="peso" class="form-label">Peso</label>
-                    <input id="peso" type="text" class="form-control" placeholder="85kg" aria-label="First name">
+                    <input id="peso" name="peso" type="text" class="form-control" placeholder="85kg" aria-label="First name">
                   </div>
                   <div class="col">
                     <label for="altura" class="form-label">Altura</label>
-                    <input id="altura" type="text" class="form-control" placeholder="185cm">
+                    <input id="altura" name="altura" type="text" class="form-control" placeholder="185cm">
                   </div>
                   <div class="d-flex col align-items-end">
                     <button type="submit" class="btn imc_calcular">Calcular</button>

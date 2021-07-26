@@ -1,8 +1,5 @@
 <?php
 
-
-use PDO;
-
 class Database
 {
     private const HOST = "localhost";
@@ -14,8 +11,7 @@ class Database
     public static function Conection()
     {
         try {
-            $connection =  new PDO("mysql:host=" . self::HOST . ";dbname=" . self::DBNAME . ";port=" . self::PORT, self::USER, self::PASSWORD);
-            return $connection;
+            return new PDO("mysql:host=" . self::HOST . ";dbname=" . self::DBNAME . ";port=" . self::PORT, self::USER, self::PASSWORD);
         } catch (\PDOException $error) {
             echo $error->getMessage();
             die();

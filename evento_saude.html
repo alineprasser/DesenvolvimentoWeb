@@ -75,10 +75,10 @@
         <h3>EVENTO SAÚDE</h3>
         <div class="evento_saude_card">
           <div style="width: 90%;" class="d-flex flex-column justify-content-center form_containers mt-3">
-            <form>
+            <form action="server/evento_saude.php" method="post">
               <label for="tipo-evento">Tipo</label>
-              <select class="form-select" id="tipo-evento">
-                <option selected>Selecione</option>
+              <select class="form-select" id="tipo-evento" name="tipo-evento" required>
+                <option selected value="">Selecione</option>
                 <option value="1">Exame</option>
                 <option value="2">Vacina</option>
                 <option value="3">Consulta</option>
@@ -86,27 +86,32 @@
 
               <div class="form-group pt-3">
                 <label for="nome-evento">Nome</label>
-                <input type="text" class="form-control" id="nome-evento" placeholder="Ex: Vacina Covid">
+                <input type="text" class="form-control" id="nome-evento" name="nome-evento" placeholder="Ex: Vacina Covid" required>
               </div>
 
               <div class="row  pt-3">
                 <div class="col">
                   <label for="data">Data</label>
-                  <input id="data" type="text" class="form-control" placeholder="10/06/2021">
+                  <div class="input-group mb-2">
+                    <span class="input-group-text">
+                      <i class="fas fa-calendar-alt"></i>
+                    </span>
+                    <input type="date" name="data" id="data" class="form-control input_user" required />
+                  </div>
                 </div>
                 <div class="col">
                   <label for="hora">Hora</label>
-                  <input id="hora" type="text" class="form-control" placeholder="10:00">
+                  <input type="time" id="hora" name="hora" class="form-control" placeholder="Select time">
                 </div>
               </div>
 
               <div class="form-group  pt-3">
                 <label for="local">Local</label>
-                <input type="text" class="form-control" id="local" placeholder="Ex: Posto de Saúde">
+                <input type="text" class="form-control" id="local" name="local" placeholder="Ex: Posto de Saúde" required>
               </div>
 
               <div class="d-flex flex-column justify-content-center align-items-center mt-3">
-                <input type="submit" name="salvar" class="btn salvar_btn mt-2" value="Salvar" />
+                <button type="submit" class="btn salvar_btn mt-2">Salvar</button>
               </div>
             </form>
           </div>

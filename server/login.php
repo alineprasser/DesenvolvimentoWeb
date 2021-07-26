@@ -1,13 +1,13 @@
 <?php
 
-require('./databaseConnection.php');
-require('./config.php');
+require_once('./DatabaseConnection.php');
+require_once('./config.php');
 
 session_start();
 $connection = Database::Conection();
 
 $query = $connection->prepare("SELECT * FROM usuarios WHERE email = :email");
-$query->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
+$query->bindParam(':email', $_POST['email']);
 $query->execute();
 if (!$query->rowCount()) {
     header('location: ' . URL_BASE, true, 422);
@@ -22,5 +22,7 @@ if ($_POST['senha'] != $data['senha']) {
     return false;
 }
 
+$_SESSION['usuario_id']     = $data['id'];
+$_SESSION['usuario_email']  = $data['email'];
 header('location: ' . URL_BASE . 'evento_saude.html');
 return true;

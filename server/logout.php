@@ -1,6 +1,6 @@
 <?php
 
-require('./databaseConnection.php');
+require('./DatabaseConnection.php');
 require('./config.php');
 
 session_start();
