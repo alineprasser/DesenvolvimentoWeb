@@ -20,6 +20,7 @@
 
   <title>OnSaúde</title>
   </script>
+  
 </head>
 
 <body>
@@ -31,9 +32,9 @@
           <span class="mb-3 text-dark">OnSaúde</span>
           <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             <li>
-              <a href="#" class="nav-link px-0" onclick="alert('Página não implementada')" >
-                <i class="fas fa-calendar-alt" style="color: #bebebe"></i>
-                <span class="ms-1 d-none d-sm-inline" style="color: #bebebe">Agenda</span>
+              <a href="./agenda.html" class="nav-link px-0">
+                <i class="fas fa-calendar-alt"></i>
+                <span class="ms-1 d-none d-sm-inline">Agenda</span>
               </a>
             </li>
 
@@ -61,7 +62,7 @@
           <hr />
           <ul>
             <li>
-              <a href="/server/logout.php" class="nav-link ">
+              <a href="./index.html" class="nav-link ">
                 <i class="fa fa-sign-out label" aria-hidden="true"></i>
                 <span class="label" style="color: red; ">Sair</span>
               </a>
@@ -72,48 +73,14 @@
 
       <!-- CONTENT AREA -->
       <div class="col py-4">
-        <h3>EVENTO SAÚDE</h3>
-        <div class="evento_saude_card">
+        <h3>AGENDA</h3>
+        <div class="agenda_card">
           <div style="width: 90%;" class="d-flex flex-column justify-content-center form_containers mt-3">
-            <form action="server/evento_saude.php" method="post">
-              <label for="tipo-evento">Tipo</label>
-              <select class="form-select" id="tipo-evento" name="tipo-evento" required>
-                <option selected value="">Selecione</option>
-                <option value="1">Exame</option>
-                <option value="2">Vacina</option>
-                <option value="3">Consulta</option>
-              </select>
+            <div id='wrap'>
 
-              <div class="form-group pt-3">
-                <label for="nome-evento">Nome</label>
-                <input type="text" class="form-control" id="nome-evento" name="nome-evento" placeholder="Ex: Vacina Covid" required>
-              </div>
-
-              <div class="row  pt-3">
-                <div class="col">
-                  <label for="data">Data</label>
-                  <div class="input-group mb-2">
-                    <span class="input-group-text">
-                      <i class="fas fa-calendar-alt"></i>
-                    </span>
-                    <input type="date" name="data" id="data" class="form-control input_user" required />
-                  </div>
-                </div>
-                <div class="col">
-                  <label for="hora">Hora</label>
-                  <input type="time" id="hora" name="hora" class="form-control" placeholder="Select time">
-                </div>
-              </div>
-
-              <div class="form-group  pt-3">
-                <label for="local">Local</label>
-                <input type="text" class="form-control" id="local" name="local" placeholder="Ex: Posto de Saúde" required>
-              </div>
-
-              <div class="d-flex flex-column justify-content-center align-items-center mt-3">
-                <button type="submit" class="btn salvar_btn mt-2">Salvar</button>
-              </div>
-            </form>
+            <div id='calendar'></div>
+            
+            <div style='clear:both'></div>
           </div>
         </div>
       </div>
