@@ -8,6 +8,12 @@
 	    background: white !important;
 	}
 
+	.evento_saude {
+		height:25%;
+		overflow-y:scroll;
+		border-bottom: 1px solid #F0F4F7;
+	}
+
 	.evento_saude_card {
 	    height: 100%;
 	    width: 100%;

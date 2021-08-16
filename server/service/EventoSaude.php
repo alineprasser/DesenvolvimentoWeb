@@ -21,17 +21,48 @@ class EventoSaude implements IRouter
         }
 
         $eventos = $this->eventoSaudeDao->getByUserId($usuarioId);
-        print_r(($eventos));
+        print json_encode($eventos);
     }
 
     public function post()
     {
-        // TODO: Implement post() method.
+        try {
+            $dadosEvento = [
+                'usuario_id' => $_SESSION['usuario_id'],
+                'tipo_evento_id' => $_POST['tipo-evento'],
+                'nome' => $_POST['nome-evento'],
+                'data_e_hora' => $_POST['data'].' '.$_POST['hora'],
+                'local' => $_POST['local']
+            ];
+            $this->eventoSaudeDao->cadastrarEventoSaude($dadosEvento);
+
+            header('location: '.URL_BASE.'evento_saude.html');
+            return true;
+        } catch (Exception $erro) {
+            echo 'Erro ao atualizar evento!'.PHP_EOL.$erro->getMessage();
+            header('location: '.URL_BASE, true, 422);
+            return false;
+        }
     }
 
     public function put()
     {
-        // TODO: Implement put() method.
+        try {
+            $dadosEvento = [
+                'tipo_evento_id' => $_POST['tipo-evento'],
+                'nome' => $_POST['nome-evento'],
+                'data_e_hora' => $_POST['data'].' '.$_POST['hora'],
+                'local' => $_POST['local']
+            ];
+            $this->eventoSaudeDao->atualizarEventoSaude($dadosEvento);
+
+            header('location: '.URL_BASE.'evento_saude.html');
+            return true;
+        } catch (Exception $erro) {
+            echo 'Erro ao cadastrar evento!'.PHP_EOL.$erro->getMessage();
+            header('location: '.URL_BASE, true, 422);
+            return false;
+        }
     }
 
     public function delete()

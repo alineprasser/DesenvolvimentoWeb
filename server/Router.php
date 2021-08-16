@@ -44,7 +44,11 @@ class Router implements IRouter
 
     public function put(): bool
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+        if (
+            $_SERVER['REQUEST_METHOD'] === 'POST' &&
+            isset($_SERVER['X-HTTP-Method-Override']) &&
+            $_SERVER['X-HTTP-Method-Override'] == 'put'
+        ) {
             $this->class->put();
             return true;
         }
