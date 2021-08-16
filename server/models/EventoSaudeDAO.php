@@ -1,7 +1,7 @@
 <?php
 
-require_once('./DatabaseConnection.php');
-require_once('./config.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'/server/DatabaseConnection.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/server/config.php';
 
 class EventoSaudeDAO
 {
@@ -16,7 +16,7 @@ class EventoSaudeDAO
     {
         try {
             $query = $this->conexao->prepare(
-                "INSERT INTO evento_consulta (usuario_id, tipo_evento_id, nome, data_e_hora, local) 
+                "INSERT INTO evento_saude (usuario_id, tipo_evento_id, nome, data_e_hora, local) 
                     VALUES(:usuario_id, :tipo_evento_id, :nome, :data_e_hora, :local)"
             );
             $query->bindValue(':usuario_id', $dadosEvento['usuario_id']);
@@ -27,6 +27,21 @@ class EventoSaudeDAO
             $query->execute();
         } catch (\PDOException $erro) {
             echo $erro->getMessage();
+        }
+    }
+
+    public function getByUserId(int $usuarioId)
+    {
+        try {
+            $query = $this->conexao->prepare(
+                "SELECT * FROM evento_saude where usuario_id = :usuario_id"
+            );
+            $query->bindValue(':usuario_id', $usuarioId);
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $erro) {
+            echo $erro->getMessage();
+            throw $erro;
         }
     }
 }

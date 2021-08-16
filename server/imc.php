@@ -1,6 +1,6 @@
 <?php
 
-require_once('./HistoricoImcDAO.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'/server/models/HistoricoImcDAO.php';
 
 try {
     $historicoImcDao = new HistoricoImcDAO();

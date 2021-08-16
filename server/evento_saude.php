@@ -1,6 +1,6 @@
 <?php
 
-require_once('./EventoSaudeDAO.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'/server/models/EventoSaudeDAO.php';
 
 try {
     $eventoSaudeDao = new EventoSaudeDAO();
