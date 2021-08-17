@@ -6,6 +6,12 @@ body, html {
     background: white !important;
 }
 
+.scrollable {
+    height: 500px;
+    overflow-y: scroll;
+    border: 1px solid #F0F4F7
+}
+
 .nav-link {
     color: #40e0d0 !important;
 }

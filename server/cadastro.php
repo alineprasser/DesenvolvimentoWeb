@@ -1,6 +1,6 @@
 <?php
 
-require_once('./UsuarioDAO.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'/server/models/UsuarioDAO.php';
 
 try {
     $usuarioDao = new UsuarioDAO();

@@ -1,7 +1,7 @@
 <?php
 
-require_once('./DatabaseConnection.php');
-require_once('./config.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'/server/DatabaseConnection.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/server/config.php';
 
 class UsuarioDAO
 {

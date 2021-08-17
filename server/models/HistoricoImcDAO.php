@@ -1,7 +1,7 @@
 <?php
 
-require_once('./DatabaseConnection.php');
-require_once('./config.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'/server/DatabaseConnection.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/server/config.php';
 
 class HistoricoImcDAO
 {
@@ -25,6 +25,24 @@ class HistoricoImcDAO
             $query->execute();
         } catch (\PDOException $erro) {
             echo $erro->getMessage();
+        }
+    }
+
+    public function getByUserId(int $usuarioId)
+    {
+        try {
+            $query = $this->conexao->prepare(
+                "SELECT *
+                FROM historico_imc
+                WHERE usuario_id = :usuario_id
+                ORDER BY data_cadastro desc"
+            );
+            $query->bindValue(':usuario_id', $usuarioId);
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $erro) {
+            echo $erro->getMessage();
+            throw $erro;
         }
     }
 }
