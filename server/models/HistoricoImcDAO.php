@@ -27,4 +27,22 @@ class HistoricoImcDAO
             echo $erro->getMessage();
         }
     }
+
+    public function getByUserId(int $usuarioId)
+    {
+        try {
+            $query = $this->conexao->prepare(
+                "SELECT *
+                FROM historico_imc
+                WHERE usuario_id = :usuario_id
+                ORDER BY data_cadastro desc"
+            );
+            $query->bindValue(':usuario_id', $usuarioId);
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $erro) {
+            echo $erro->getMessage();
+            throw $erro;
+        }
+    }
 }
