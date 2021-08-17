@@ -20,8 +20,8 @@ class Imc implements IRouter
             echo 'Não foi informado o id do usuário.';
         }
 
-        $eventos = $this->historicoImcDAO->getByUserId($usuarioId);
-        print json_encode($eventos);
+        $imc = $this->historicoImcDAO->getByUserId($usuarioId);
+        print json_encode($imc);
     }
 
     public function post()
