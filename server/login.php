@@ -16,7 +16,7 @@ if (!$query->rowCount()) {
 }
 
 $data = $query->fetch(PDO::FETCH_ASSOC);
-if ($_POST['senha'] != $data['senha']) {
+if (!password_verify($_POST['senha'], $data['senha'])) {
     header('location: ' . URL_BASE, true, 422);
     echo 'Email e/ou senha inválidos!';
     return false;

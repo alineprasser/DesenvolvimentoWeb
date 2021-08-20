@@ -6,18 +6,18 @@ try {
     $usuarioDao = new UsuarioDAO();
     verificarDadosCadastro($usuarioDao);
 
+    $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $dadosUsuario = [
         'nome' => $_POST['name'],
         'email' => $_POST['email'],
         'dataNascimento' => $_POST['nascimento'],
         'cpf' => $_POST['cpf'],
-        'senha' => $_POST['password'],
+        'senha' => $hashed_password,
         'confirmeSenha' => $_POST['confirm_password'],
     ];
     $usuarioDao->cadastrarUsuario($dadosUsuario);
 
-    header('location: '.URL_BASE, true, 200);
-    echo 'Usuário cadastrado com sucesso!';
+    header('location: '.URL_BASE);
     return true;
 } catch (Exception $erro) {
     echo 'Erro ao cadastrar usuário!'.PHP_EOL.$erro->getMessage();
