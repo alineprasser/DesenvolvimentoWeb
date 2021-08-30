@@ -20,7 +20,7 @@ class UsuarioDAO
             $query->bindValue(':email', $dadosUsuario['email']);
             $query->bindValue(':senha', $dadosUsuario['senha']);
             $query->bindValue(':cpf', $dadosUsuario['cpf']);
-            $query->bindValue(':data_nascimento', $dadosUsuario['data_nascimento']);
+            $query->bindValue(':data_nascimento', $dadosUsuario['dataNascimento']);
             $query->execute();
         } catch (\PDOException $erro) {
             echo $erro->getMessage();

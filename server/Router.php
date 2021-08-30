@@ -1,6 +1,7 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/server/IRouter.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/server/service/Usuario.php';
 
 class Router implements IRouter
 {
@@ -13,6 +14,10 @@ class Router implements IRouter
 
     public function run()
     {
+        if (!Usuario::verifyLogin()) {
+            http_response_code(403);
+            echo "Você precisa estar logado para usar este recurso!";
+        }
         if ($this->get()) {
             return;
         } elseif ($this->post()) {
