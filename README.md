@@ -1,2 +1,3 @@
 # DesenvolvimentoWeb
-Primeiro commit (Tarefa 2)
+
+Para iniciar o o servidor rode `php -S localhost:8080`
