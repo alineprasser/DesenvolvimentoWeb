@@ -1,3 +1,3 @@
 # DesenvolvimentoWeb
 
-Para iniciar o o servidor rode `php -S localhost:8080`
+Para iniciar o servidor rode `php -S localhost:8080`
