@@ -22,7 +22,8 @@ if (!password_verify($_POST['senha'], $data['senha'])) {
     return false;
 }
 
-$_SESSION['usuario_id']     = $data['id'];
+$_SESSION['online'] = true;
+$_SESSION['usuario_id'] = $data['id'];
 $_SESSION['usuario_email']  = $data['email'];
 header('location: ' . URL_BASE . 'evento_saude.html');
 return true;
