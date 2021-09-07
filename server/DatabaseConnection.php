@@ -6,7 +6,7 @@ class Database
     private const DBNAME = "devweb";
     private const PORT = "3306";
     private const USER = "root";
-    private const PASSWORD = "root";
+    private const PASSWORD = "";
 
     public static function Conection()
     {
